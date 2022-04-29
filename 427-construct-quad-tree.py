@@ -1,5 +1,3 @@
-from functools import partial
-from tkinter import N
 from typing import List
 
 """
