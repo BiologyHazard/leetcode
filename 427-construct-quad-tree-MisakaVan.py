@@ -1,4 +1,7 @@
 # Definition for a QuadTree node.
+from typing import List
+
+
 class Node:
     def __init__(self, val, isLeaf, topLeft, topRight, bottomLeft, bottomRight):
         self.val = val
@@ -10,7 +13,7 @@ class Node:
 
 
 class Solution:
-    def construct(self, grid: list[list[int]]) -> Node:
+    def construct(self, grid: List[List[int]]) -> Node:
         def subsearch(x1, y1, x2, y2):
             if all(grid[x1][y1] == grid[i][j] for i in range(x1, x2) for j in range(y1, y2)):
                 return Node(grid[x1][y1], True, None, None, None, None)
