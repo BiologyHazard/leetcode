@@ -1,8 +1,7 @@
-# Definition for a binary tree node.
-
 from typing import List
 
 
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -12,13 +11,14 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        def buildSub(preorder: List[int], inorder: List[int]) -> TreeNode:
-            headPos = inorder.index(preorder[0])
-            a, b = None, None
-            if headPos > 0:
-                a = buildSub(preorder[1:headPos+1], inorder[:headPos])
-            if headPos <= len(inorder)-2:
-                b = buildSub(preorder[headPos+1:], inorder[headPos+1:])
-            return TreeNode(preorder[0], a, b)
+        def build(f1, f2):
+            if not f1:
+                return
 
-        return buildSub(preorder, inorder)
+            root_idx = f2.index(f1[0])
+
+            return TreeNode(f1[0],
+                            build(f1[1:root_idx+1], f2[:root_idx]),
+                            build(f1[root_idx+1:], f2[root_idx+1:]))
+
+        return build(preorder, inorder)
