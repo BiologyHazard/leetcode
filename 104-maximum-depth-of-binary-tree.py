@@ -1,8 +1,7 @@
-# Definition for a binary tree node.
-
 from typing import Optional
 
 
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -12,10 +11,10 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        def depthof(root):
-            if not root:
+        def dfs(root):
+            if root is None:
                 return 0
-            else:
-                return max(depthof(root.left), depthof(root.right))+1
-
-        return depthof(root)
+            dl = dfs(root.left)
+            dr = dfs(root.right)
+            return max(dl, dr) + 1
+        return dfs(root)
