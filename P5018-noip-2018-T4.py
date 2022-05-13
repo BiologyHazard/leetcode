@@ -1,9 +1,3 @@
-# class TreeNode:
-#     def __init__(self, val: int, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-
 def same(n1, n2) -> bool:
     if n1 is None and n2 is None:
         return True
